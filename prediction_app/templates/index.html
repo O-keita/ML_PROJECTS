@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Price Prediction</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/styles.css') }}"
+    />
+
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/techverse.png')}}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>House Price Prediction</h1>
+
+      <form action="" method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-grid">
+          {% for field in form if field.widget.input_type != 'hidden' %}
+          <div>
+            <p>
+              {{ field.label(class="form-label") }} {{ field(class="form-input")
+              }}
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+
+        <button type="submit">Predict</button>
+      </form>
+
+      <p>Price Estimated is <span class="pr"> $ {{ predicted_price }}</span></p>
+    </div>
+  </body>
+</html>
